@@ -188,6 +188,26 @@ Use `language="auto"` to automatically detect the input language.
 - **RAM**: 32GB+ recommended
 - **Storage**: 250GB+ free for full datasets
 
+## Cheap GPU VPS / Cloud Options
+
+For running the pipeline without a local GPU, these platforms offer affordable GPU instances with 24GB+ VRAM. Prices change; check each provider’s pricing page for current rates.
+
+| Provider | Best for | 24GB GPU (e.g. RTX 3090) | Notes |
+| -------- | -------- | ------------------------- | ----- |
+| **[Vast.ai](https://vast.ai/)** | Lowest cost | ~$0.08–0.18/hr | Marketplace pricing; often 3–6× cheaper than big cloud. Per-minute billing, many RTX 3090/4090 options. [Pricing](https://vast.ai/pricing) |
+| **[RunPod](https://www.runpod.io/)** | Reliability + serverless | ~$0.14–0.44/hr (pods); serverless per-second | Fixed pricing, Docker-friendly, serverless for inference. [Pricing](https://www.runpod.io/pricing-page) |
+| **[DigitalOcean](https://www.digitalocean.com/pricing/gpu-droplets)** | Simplicity | RTX 4000 20GB ~$0.76/hr; L40S 48GB ~$1.57/hr | Predictable pricing, good for small teams. 20GB may work with reduced batch size. |
+| **[Lambda Labs](https://lambdalabs.com/)** | Stability | ~$0.50+/hr | Production-style infra, 1-click Jupyter; often higher cost and limited availability. |
+| **[Vultr](https://www.vultr.com/products/cloud-gpu/)** | Global regions | Varies | NVIDIA partner, many regions; check current GPU offerings. |
+
+**Suggestions for this project**
+
+- **Training / long runs**: [Vast.ai](https://vast.ai/) or [RunPod](https://www.runpod.io/) spot/pods — filter for RTX 3090 (24GB) or A100 (40/80GB) and attach enough storage (250GB+ for full datasets).
+- **Inference / API**: RunPod [Serverless](https://www.runpod.io/product/serverless) (pay per second, no idle cost) or a small always-on pod on Vast.ai/RunPod.
+- **Budget-first**: Vast.ai usually has the lowest hourly rates; use Interruptible/spot for non-urgent jobs.
+
+Storage (250GB+ for full data) is billed separately on most platforms (e.g. RunPod network volumes ~$0.07/GB/mo; Vast.ai varies by host). Prefer regions close to your users for lower latency.
+
 ## API Endpoints
 
 | Method | Endpoint                | Description                           |
