@@ -27,8 +27,8 @@ A comprehensive pipeline for building multilingual Speech-to-Speech (S2S) AI sys
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/theonlyamos/ghana-speech-to-speech-pipeline
-cd ghana-speech-to-speech-pipeline
+git clone https://github.com/theonlyamos/ghana-languages-speech-to-speech-pipeline
+cd ghana-languages-speech-to-speech-pipeline
 ```
 
 ### 2. Create virtual environment
@@ -159,13 +159,16 @@ ghana_sts_model/
 
 ## Datasets
 
-The pipeline uses data from:
+The pipeline primarily uses the following datasets:
 
 | Dataset                                                                                   | Languages                           | Size   | Use          |
 | ----------------------------------------------------------------------------------------- | ----------------------------------- | ------ | ------------ |
 | [UGSpeechData](https://www.scidb.cn/en/detail?dataSetId=bbd6baee3acf43bbbc4fe25e21077c8a) | Akan, Ewe, Dagbani, Dagaare, Ikposo | ~336GB | ASR Training |
+| [FISD](https://github.com/Ashesi-Org/Financial-Inclusion-Speech-Dataset)                  | Ga, Fante, Akuapem Twi, Asante Twi  | ~1.2GB | Domain ASR   |
 | [BibleTTS](http://www.openslr.org/129/)                                                   | Asante Twi, Akuapem Twi, Ewe        | ~50GB  | TTS Training |
-| [FISD](https://adr.ashesi.edu.gh/datasets)                                                | Ga, Fante, Twi                      | ~15GB  | Domain ASR   |
+
+- **UGSpeechData**: Multilingual speech dataset of Ghanaian languages ([SciDB](https://www.scidb.cn/en/detail?dataSetId=bbd6baee3acf43bbbc4fe25e21077c8a)).
+- **FISD**: Financial Inclusion Speech Dataset by Ashesi University and Nokwary Technologies (~148 hours, CC-BY-4.0) ([GitHub](https://github.com/Ashesi-Org/Financial-Inclusion-Speech-Dataset)).
 
 ## Language Codes
 
@@ -197,6 +200,7 @@ Use `language="auto"` to automatically detect the input language.
 | GET    | `/health`               | Health check                          |
 
 **Example with auto-detection:**
+
 ```bash
 curl -X POST "http://localhost:8000/api/speech-to-speech" \
   -F "audio=@input.wav" \
@@ -247,6 +251,7 @@ This project uses models and datasets with various licenses:
 - MMS: CC-BY-NC 4.0
 - NLLB: CC-BY-NC 4.0
 - BibleTTS: CC-BY-SA 4.0
+- FISD: CC-BY-4.0
 - UGSpeechData: Academic use
 
 Please check individual dataset/model licenses for commercial use.
